@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentCollab – Solutions by Skill</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/solutions.css">
+</head>
+<body>
+<div class="app-container">
+  <div id="site-header"></div>
+
+  <section class="sol-hero">
+    <div class="sol-hero-eyebrow">Skill Intelligence</div>
+    <h1>Explore skills, trends<br>and <span>campus projects</span></h1>
+    <p>See what's in demand, which research topics are active, and find gigs matched to your skills.</p>
+    <div class="sol-hero-search">
+      <input type="text" id="heroSearch" placeholder="Search skills — React, ML, Figma…">
+      <button type="button" id="heroSearchBtn">Search</button>
+    </div>
+  </section>
+
+  <div class="sol-stats" id="statsStrip"></div>
+
+  <section class="sol-analytics-wrap">
+    <h2 class="analytics-heading">Platform Analytics</h2>
+    <div id="analyticsPanel"></div>
+  </section>
+
+  <div class="sol-tabs-bar">
+    <button class="sol-tab active" data-cat="All">All Skills</button>
+    <button class="sol-tab" data-cat="Development">Development</button>
+    <button class="sol-tab" data-cat="Design">Design</button>
+    <button class="sol-tab" data-cat="Data">Data & Research</button>
+    <button class="sol-tab" data-cat="Writing">Writing</button>
+    <button class="sol-tab" data-cat="Marketing">Marketing</button>
+    <button class="sol-tab" data-cat="Media">Media & Video</button>
+  </div>
+
+  <main class="sol-main">
+    <div class="sol-section-heading">
+      <h2 id="sectionHeading">All Skill Solutions</h2>
+      <span id="resultCount">Loading…</span>
+    </div>
+    <div class="sol-grid" id="solGrid"></div>
+    <div class="sol-empty" id="solEmpty"><p>No skills match your search.</p></div>
+
+    <div class="sol-cta">
+      <h2>Can't find what you need?</h2>
+      <p>Post as a Host and let skilled teammates come to you.</p>
+      <div class="sol-cta-btns">
+        <a href="post.html" class="sol-cta-btn-primary">Post Opportunity</a>
+        <a href="members.html" class="sol-cta-btn-secondary">Browse Members</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"><p class="footer-text">© 2026 StudentCollab. Connecting students for collaboration and opportunity.</p></footer>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/pages/solutions.js"></script>
+</body>
+</html>

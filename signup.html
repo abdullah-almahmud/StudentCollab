@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentCollab – Sign Up</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/auth.css">
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-box" style="max-width:480px">
+    <h1>Create Account</h1>
+    <p class="subtitle">Join StudentCollab and start collaborating</p>
+    <form id="signupForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input class="input" type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="input" type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password (6+ characters)</label>
+        <input class="input" type="password" id="password" required minlength="6">
+      </div>
+      <div class="form-group">
+        <label for="major">Major</label>
+        <input class="input" type="text" id="major" placeholder="e.g., Computer Science">
+      </div>
+      <div class="form-group">
+        <label>Select Skills (pick 3–5)</label>
+        <div class="skills-select" id="skillSelect"></div>
+      </div>
+      <p class="error-msg hidden" id="errorMsg"></p>
+      <button type="submit" class="btn btn-primary">Create Account</button>
+    </form>
+    <p class="auth-link">Already have an account? <a href="login.html">Log in</a></p>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script>
+let selectedSkills = new Set();
+let allSkills = [];
+
+async function loadSkills() {
+  const data = await apiFetch('skills.php?action=all');
+  allSkills = data.skills;
+  renderSkills();
+}
+
+function renderSkills() {
+  document.getElementById('skillSelect').innerHTML = allSkills.map(s =>
+    `<button type="button" class="skill-tag-btn${selectedSkills.has(s.id) ? ' on' : ''}" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:999px;border:1px solid #475569;background:${selectedSkills.has(s.id) ? 'rgba(16,185,129,0.12)' : 'transparent'};color:${selectedSkills.has(s.id) ? '#10b981' : '#94a3b8'};cursor:pointer" onclick="toggleSkill(${s.id})">${s.name}</button>`
+  ).join('');
+}
+
+function toggleSkill(id) {
+  if (selectedSkills.has(id)) selectedSkills.delete(id);
+  else if (selectedSkills.size < 5) selectedSkills.add(id);
+  renderSkills();
+}
+
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const err = document.getElementById('errorMsg');
+  err.classList.add('hidden');
+  if (selectedSkills.size < 1) {
+    err.textContent = 'Please select at least one skill';
+    err.classList.remove('hidden');
+    return;
+  }
+  try {
+    await apiFetch('auth.php?action=register', {
+      method: 'POST',
+      body: {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        major: document.getElementById('major').value,
+        skill_ids: [...selectedSkills],
+      },
+    });
+    window.location.href = 'index.html';
+  } catch (ex) {
+    err.textContent = ex.message;
+    err.classList.remove('hidden');
+  }
+});
+
+loadSkills();
+</script>
+</body>
+</html>

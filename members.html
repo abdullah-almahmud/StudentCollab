@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentCollab – Find Collaborators</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/pages/members.css">
+</head>
+<body>
+<div class="app-container">
+  <div id="site-header"></div>
+
+  <section class="sol-hero">
+    <div class="sol-hero-eyebrow">Members</div>
+    <h1>Find <span>Teammates</span></h1>
+    <p>Browse student profiles, skills, and portfolios to build your team.</p>
+    <div class="sol-hero-search">
+      <input type="text" id="memberSearch" placeholder="Search by name, major, or skill…">
+      <button type="button" onclick="loadMembers()">Search</button>
+    </div>
+  </section>
+
+  <div class="home-filters" style="max-width:1200px">
+    <span class="text-muted" style="font-size:0.85rem">Filter by skill:</span>
+    <div class="skills-pills-wrapper" id="skillPills"></div>
+  </div>
+
+  <main class="members-main">
+    <div class="member-grid" id="memberGrid"></div>
+  </main>
+
+  <footer class="footer"><p class="footer-text">© 2026 StudentCollab. Connecting students for collaboration and opportunity.</p></footer>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/pages/members.js"></script>
+</body>
+</html>

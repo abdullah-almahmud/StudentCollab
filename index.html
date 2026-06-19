@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentCollab – Browse Opportunities</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+</head>
+<body>
+<div class="app-container">
+  <div id="site-header"></div>
+
+  <section class="sol-hero">
+    <div class="sol-hero-eyebrow">Opportunities</div>
+    <h1>Browse <span>Gigs & Projects</span></h1>
+    <p>Freelance work, collaborations, and research projects posted by student hosts on campus.</p>
+    <div class="sol-hero-search">
+      <input type="text" id="searchInput" placeholder="Search by title, skill, or topic…">
+      <button type="button" id="searchBtn">Search</button>
+    </div>
+  </section>
+
+  <div class="home-tabs-bar">
+    <button class="home-tab active" data-type="all" onclick="setTab('all')">All</button>
+    <button class="home-tab" data-type="freelance" onclick="setTab('freelance')">Freelance</button>
+    <button class="home-tab" data-type="collaboration" onclick="setTab('collaboration')">Collaborations</button>
+  </div>
+
+  <div class="home-filters">
+    <span class="text-muted filter-label">Filter by skill</span>
+    <div class="skills-pills-wrapper" id="skillPills"></div>
+  </div>
+
+  <main class="home-main">
+    <div class="gig-grid" id="gigGrid"></div>
+  </main>
+
+  <section class="how-it-works">
+    <h2 class="section-title-center">How It Works</h2>
+    <div class="how-grid auto-grid">
+      <div class="how-step"><div class="how-step-num">1</div><h3>Browse or Post</h3><p class="text-muted">Hosts post gigs; teammates browse by skill.</p></div>
+      <div class="how-step"><div class="how-step-num">2</div><h3>Apply with Portfolio</h3><p class="text-muted">Highlight relevant skills and projects in your proposal.</p></div>
+      <div class="how-step"><div class="how-step-num">3</div><h3>Team Up</h3><p class="text-muted">Get accepted and chat per project.</p></div>
+    </div>
+  </section>
+
+  <footer class="footer"><p class="footer-text">© 2026 StudentCollab. Connecting students for collaboration and opportunity.</p></footer>
+</div>
+
+<div class="modal-overlay" id="applyModal">
+  <div class="modal-content modal-wide">
+    <h2 class="modal-title">Apply to Opportunity</h2>
+    <p class="modal-subtitle" id="applyGigTitle"></p>
+    <div class="form-group">
+      <label for="applyMessage">Your Proposal</label>
+      <textarea class="input" id="applyMessage" rows="3" placeholder="Explain why you're a great fit…"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Highlight Your Skills <span class="text-muted">(relevant to this gig)</span></label>
+      <div class="skills-pills-wrapper" id="applySkills"></div>
+    </div>
+    <div class="form-group">
+      <label>Include Portfolio Projects</label>
+      <div id="applyPortfolio" class="apply-portfolio-list"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeApplyModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="submitApplication()">Submit Application</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/pages/home.js"></script>
+</body>
+</html>

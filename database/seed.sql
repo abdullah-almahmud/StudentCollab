@@ -1,0 +1,2 @@
+-- Seed data is loaded automatically by database/seed.php when the database is first created.
+-- See api/db.php for initialization logic.

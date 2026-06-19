@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentCollab – Applications</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/applications.css">
+</head>
+<body>
+<div class="app-container">
+  <div id="site-header"></div>
+
+  <main class="apps-main">
+    <h1 style="color:#fff;font-size:1.75rem;margin-bottom:0.5rem">Applications</h1>
+    <p class="text-muted" style="margin-bottom:1.5rem">Manage project proposals you've received or sent.</p>
+
+    <div class="apps-tabs">
+      <button class="apps-tab active" data-tab="sent" onclick="setTab('sent')">Sent</button>
+      <button class="apps-tab" data-tab="received" onclick="setTab('received')">Received</button>
+    </div>
+
+    <div id="appsList"></div>
+  </main>
+
+  <footer class="footer"><p class="footer-text">© 2026 StudentCollab. Connecting students for collaboration and opportunity.</p></footer>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/pages/applications.js"></script>
+</body>
+</html>
