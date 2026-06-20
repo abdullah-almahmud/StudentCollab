@@ -39,6 +39,9 @@ All demo accounts use password: **demo123**
 
 ## Project structure
 
+## Project Structure
+
+```
 .
 ├── applications.html
 ├── index.html
@@ -92,4 +95,4 @@ All demo accounts use password: **demo123**
         ├── post.js
         ├── profile.js
         └── solutions.js
-
+```
